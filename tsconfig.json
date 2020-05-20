@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ES2018",
         "module": "CommonJS",
         "outDir": "src",
         "sourceMap": true,
         "lib": [
-            "ES6"
+            "ES2018"
         ]
     },
     "include": [
