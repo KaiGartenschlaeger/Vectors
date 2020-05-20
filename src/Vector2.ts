@@ -90,6 +90,13 @@ export class Vector2 {
     }
 
     /**
+     * Returns a new vector with all components in absolute values (i.e. positive).
+     */
+    public absoluted(): Vector2 {
+        return new Vector2(Math.abs(this.x), Math.abs(this.y));
+    }
+
+    /**
      * Returns the vector rotated by radians.
      */
     public rotated(radian: number) {
@@ -102,6 +109,36 @@ export class Vector2 {
      */
     public angle(): number {
         return Math.atan2(this.y, this.x);
+    }
+
+    /**
+     * Returns the angle in radians to the vector other.
+     */
+    public angleTo(other: Vector2): number {
+        return Math.atan2(this.cross(other), this.dot(other));
+    }
+
+    /**
+     * Returns the angle in radians between the line connecting the two points and the X coordinate.
+     */
+    public angleToPoint(other: Vector2): number {
+        return Math.atan2(this.y - other.y, this.x - other.x);
+    }
+
+    public negate() {
+        this.x = -this.x;
+        this.y = -this.y;
+    }
+
+    public negated(): Vector2 {
+        return new Vector2(-this.x, -this.y);
+    }
+
+    /**
+     * Returns the 2-dimensional analog of the cross product with the given vector.
+     */
+    public cross(other: Vector2): number {
+        return this.x * other.y - this.y * other.x;
     }
 
     /**
@@ -155,6 +192,17 @@ export class Vector2 {
             this.x /= length;
             this.y /= length;
         }
+    }
+
+    /**
+     * Returns a normalized vector.
+     * The vector scales to unit length. Equivalent to v / v.length().
+     */
+    public normalized(): Vector2 {
+        let tmp = new Vector2(this.x, this.y);
+        tmp.normalize();
+
+        return tmp;
     }
 
     public equals(other: Vector2): boolean {
