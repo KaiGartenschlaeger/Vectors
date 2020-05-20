@@ -13,7 +13,11 @@
         "out": true,
         "node_modules": true
     },
+    "explorer.compactFolders": false,
+    "explorer.sortOrder": "type",
     "debug.internalConsoleOptions": "openOnSessionStart",
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.tabCloseButton": "right",
     "prettier.tabWidth": 4,
     "prettier.useTabs": false,
     "prettier.singleQuote": false,
