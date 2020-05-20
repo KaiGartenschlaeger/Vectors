@@ -10,11 +10,12 @@
     "files.insertFinalNewline": true,
     "files.encoding": "utf8",
     "files.exclude": {
-        "out": true,
-        "node_modules": true
+        "node_modules": true,
+        "src/**/*.js": true,
+        "src/**/*.map": true
     },
     "explorer.compactFolders": false,
-    "explorer.sortOrder": "type",
+    "explorer.sortOrder": "default",
     "debug.internalConsoleOptions": "openOnSessionStart",
     "workbench.editor.enablePreview": false,
     "workbench.editor.tabCloseButton": "right",
@@ -22,5 +23,11 @@
     "prettier.useTabs": false,
     "prettier.singleQuote": false,
     "prettier.semi": true,
-    "prettier.printWidth": 150
+    "prettier.printWidth": 150,
+    "jasmineExplorer.config": "jasmine.json",
+    "jasmineExplorer.breakOnFirstLine": true,
+    "jasmineExplorer.nodeArgv": [
+        "-r",
+        "ts-node/register"
+    ],
 }
