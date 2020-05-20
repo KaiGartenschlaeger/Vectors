@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "CommonJS",
+        "outDir": "out",
+        "sourceMap": true
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}
