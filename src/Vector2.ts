@@ -37,7 +37,12 @@ export class Vector2 {
         this.y = y;
     }
 
-    public add(other: Vector2): Vector2 {
+    public add(other: Vector2) {
+        this.x += other.x;
+        this.y += other.y;
+    }
+
+    public added(other: Vector2) {
         return Vector2.add(this, other);
     }
 
@@ -45,7 +50,12 @@ export class Vector2 {
         return new Vector2(a.x + b.x, a.y + b.y);
     }
 
-    public subtract(other: Vector2): Vector2 {
+    public subtract(other: Vector2) {
+        this.x -= other.x;
+        this.y -= other.y;
+    }
+
+    public subtracted(other: Vector2): Vector2 {
         return Vector2.subtract(this, other);
     }
 
@@ -53,12 +63,30 @@ export class Vector2 {
         return new Vector2(a.x - b.x, a.y - b.y);
     }
 
-    public multiply(scalar: number): Vector2 {
+    public multiply(scale: number) {
+        this.x *= scale;
+        this.y *= scale;
+    }
+
+    public multiplied(scalar: number): Vector2 {
         return Vector2.multiply(this, scalar);
     }
 
     public static multiply(a: Vector2, scalar: number): Vector2 {
         return new Vector2(a.x * scalar, a.y * scalar);
+    }
+
+    public devide(other: Vector2) {
+        this.x /= other.x;
+        this.y /= other.y;
+    }
+
+    public devided(other: Vector2): Vector2 {
+        return Vector2.devide(this, other);
+    }
+
+    public static devide(a: Vector2, b: Vector2): Vector2 {
+        return new Vector2(a.x / b.x, a.y / b.y);
     }
 
     /**
@@ -91,8 +119,46 @@ export class Vector2 {
         return this.x * this.x + this.y * this.y;
     }
 
+    /**
+     * Returns the distance to vector other.
+     */
     public distanceTo(other: Vector2): number {
         return Math.sqrt((this.x - other.x) * (this.x - other.x) + (this.y - other.y) * (this.y - other.y));
+    }
+
+    /**
+     * Returns the squared distance to vector other.
+     * Prefer this function over distanceTo if you need to sort vectors or need the squared distance for some formula.
+     */
+    public distanceSquaredTo(other: Vector2): number {
+        return (this.x - other.x) * (this.x - other.x) + (this.y - other.y) * (this.y - other.y);
+    }
+
+    /**
+     * Returns the dot product with vector other.
+     */
+    public dot(other: Vector2): number {
+        return this.x * other.x + this.y * other.y;
+    }
+
+    /**
+     * Normalizes the vector.
+     * The vector scales to unit length. Equivalent to v / v.length().
+     */
+    public normalize() {
+        let squaredLength = this.lengthSquared();
+        if (squaredLength == 0) {
+            this.x = 0;
+            this.y = 0;
+        } else {
+            let length = Math.sqrt(squaredLength);
+            this.x /= length;
+            this.y /= length;
+        }
+    }
+
+    public equals(other: Vector2): boolean {
+        return this.x == other.x && this.y == other.y;
     }
 
     public toString = (): string => {

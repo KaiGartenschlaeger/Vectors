@@ -11,3 +11,5 @@ console.log(Vector2.left.angle());
 
 let vR = new Vector2(10, 0);
 console.log(vR.rotated(Math.PI));
+
+console.log(v1.equals(v2));
